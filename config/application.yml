@@ -1,0 +1,19 @@
+defaults: &defaults
+  broker:
+    backend: tcp://127.0.0.1:7776
+    frontend: tcp://127.0.0.1:7777
+  logging:
+    console:
+      level: info
+
+development:
+  <<: *defaults
+  database:
+    adapter: postgresql
+    database: zss-tutorial-development
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'zss/client'
+config = {
+  frontend: "tcp://127.0.0.1:7777",
+  timeout: 1000
+}
+
+sid = "person"
+
+begin
+  client = ZSS::Client.new(sid, config)
+  p client.get()
+rescue ZSS::Error => e
+  if e.code == 404
+    p e.message
+  else
+    raise e
+  end
+end
